@@ -22,13 +22,12 @@ void loop(){
   //busca temp 
   barramento.requestTemperatures(); 
   float temperatura = barramento.getTempC(sensor);
-  /*
-  if(temperatura>=30){          //verifica temperatura 
+  if(temperatura>=40){          //verifica temperatura 
     //liga contatora
     digitalWrite(contatora, HIGH);
   } else{
     digitalWrite(contatora, LOW);
-  }*/
+  }
   visor.setCursor(1,0); //SETA A POSIÇÃO DO CURSOR
   visor.print("TEMPERATURA ATUAL:"); //IMPRIME O TEXTO NO DISPLAY LCD
   visor.setCursor(7,1); //SETA A POSIÇÃO DO CURSOR
@@ -43,5 +42,8 @@ void loop(){
   visor.print(cont);
   cont=cont+1;
   Serial.println("RODOU");
+  if(cont>50){
+    cont=0;
+  }
   delay(tempoDelay); //2 min para verificar novamente
 }
